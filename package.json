@@ -1,6 +1,6 @@
 {
     "name": "@peulicke/geometry",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "private": false,
     "type": "module",
     "scripts": {
@@ -24,7 +24,6 @@
     },
     "exports": {
         ".": "./dist/index.js",
-        "./vec2": "./dist/vec2.js",
-        "./vec3": "./dist/vec3.js"
+        "./*": "./dist/*.js"
     }
 }

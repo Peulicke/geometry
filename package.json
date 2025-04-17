@@ -29,6 +29,16 @@
             "require": "./dist/index.js",
             "import": "./dist/index.js",
             "types": "./dist/index.d.ts"
+        },
+        "./vec2": {
+            "require": "./dist/vec2.js",
+            "import": "./dist/vec2.js",
+            "types": "./dist/vec2.d.ts"
+        },
+        "./vec3": {
+            "require": "./dist/vec3.js",
+            "import": "./dist/vec3.js",
+            "types": "./dist/vec3.d.ts"
         }
     }
 }

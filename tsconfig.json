@@ -20,5 +20,8 @@
       "es2022"
     ]
   },
-  "type": "module"
+  "type": "module",
+  "include": [
+    "src"
+  ]
 }

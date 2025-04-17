@@ -1,3 +1,4 @@
+import type { Grid } from "./grid";
 import random from "./random";
 
 export type Vec2 = [number, number];
@@ -114,6 +115,8 @@ export const gridNeighbors = (pos: Vec2 = [0, 0]) => [
     ...gridEdges(pos).map(({ n, p }) => ({ n, p, isEdge: true })),
     ...gridCorners(pos).map(({ n, p }) => ({ n, p, isEdge: false }))
 ];
+
+export const sizeOfGrid = <T>(grid: Grid<T>): Vec2 => [grid.length, grid[0]?.length ?? 0];
 
 export const unique = (vList: Vec2[]): Vec2[] => {
     const result: Vec2[] = [];

@@ -10,7 +10,8 @@
         "deploy": "npm run build && npm publish --access public"
     },
     "dependencies": {
-        "random-seed": "^0.3.0"
+        "random-seed": "^0.3.0",
+        "tinyqueue": "^3.0.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.24.0",

@@ -1,5 +1,3 @@
-import random from "./random";
-
 export type Vec3 = [number, number, number];
 
 export const clone = (v: Vec3): Vec3 => [...v];
@@ -50,7 +48,8 @@ export const normalize = (v: Vec3): Vec3 => {
     return scale(v, 1 / l);
 };
 
-export const rand = (amount: number): Vec3 => scale([random() - 0.5, random() - 0.5, random() - 0.5], amount * 2);
+export const rand = (amount: number, random: () => number): Vec3 =>
+    scale([random() - 0.5, random() - 0.5, random() - 0.5], amount * 2);
 
 export const rotate = (v: Vec3, axis: Vec3, angle: number): Vec3 => {
     const a = normalize(axis);

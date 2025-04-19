@@ -6,6 +6,7 @@
     "scripts": {
         "test": "jest src",
         "build": "[ -d dist ] && rm -r dist; tsc -p tsconfig.json",
+        "typecheck": "tsc --noEmit",
         "lint": "eslint src",
         "deploy": "npm run build && npm publish --access public"
     },

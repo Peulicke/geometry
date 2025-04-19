@@ -1,5 +1,4 @@
 import type { Grid } from "./grid";
-import random from "./random";
 
 export type Vec2 = [number, number];
 
@@ -143,11 +142,12 @@ export const rotate = (v: Vec2, angle: number): Vec2 => {
 
 export const getDir = (angle: number): Vec2 => [Math.cos(angle), Math.sin(angle)];
 
-export const randSize = (size: Vec2): Vec2 => multiply([random(), random()], size);
+export const randSize = (size: Vec2, random: () => number): Vec2 => multiply([random(), random()], size);
 
-export const randNumber = (size: number): Vec2 => randSize([size, size]);
+export const randNumber = (size: number, random: () => number): Vec2 => randSize([size, size], random);
 
-export const randFromTo = (from: Vec2, to: Vec2): Vec2 => add(randSize(sub(to, from)), from);
+export const randFromTo = (from: Vec2, to: Vec2, random: () => number): Vec2 =>
+    add(randSize(sub(to, from), random), from);
 
 export type Rect = [Vec2, Vec2];
 

@@ -84,3 +84,15 @@ it("clamps", () => {
     expect(vec2.clamp([10, 3], [0, 0], [5, 5])).toStrictEqual([5, 3]);
     expect(vec2.clamp([-3, -30], [-5, -5], [5, 5])).toStrictEqual([-3, -5]);
 });
+
+describe("random", () => {
+    it("generates a random vec2 given a size", () => {
+        expect(vec2.randSize([10, 10], () => 0.5)).toStrictEqual([5, 5]);
+    });
+    it("generates a random vec2 given a number", () => {
+        expect(vec2.randNumber(10, () => 0.5)).toStrictEqual([5, 5]);
+    });
+    it("generates a random vec2 given a from and to vec2", () => {
+        expect(vec2.randFromTo([10, 10], [20, 20], () => 0.5)).toStrictEqual([15, 15]);
+    });
+});

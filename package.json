@@ -14,10 +14,10 @@
         "tinyqueue": "^3.0.0"
     },
     "devDependencies": {
-        "@eslint/js": "^9.24.0",
+        "@eslint/js": "^9.25.0",
         "@types/jest": "^29.5.14",
         "@types/random-seed": "^0.3.5",
-        "eslint": "^9.24.0",
+        "eslint": "^9.25.0",
         "jest": "^29.7.0",
         "ts-jest": "^29.3.2",
         "typescript": "~5.8.3",

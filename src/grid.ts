@@ -1,5 +1,5 @@
 import TinyQueue from "tinyqueue";
-import * as vec2 from "./vec2";
+import * as vec2 from "./vec2.js";
 
 export type Grid<T> = T[][];
 

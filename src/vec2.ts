@@ -1,4 +1,4 @@
-import type { Grid } from "./grid";
+import type { Grid } from "./grid.js";
 
 export type Vec2 = [number, number];
 

@@ -1,4 +1,4 @@
-import * as vec2 from "./vec2";
+import * as vec2 from "./vec2.js";
 
 const epsilon = 1e-10;
 

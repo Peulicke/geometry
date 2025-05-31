@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import * as vec2 from "./vec2.js";
 
 const epsilon = 1e-10;

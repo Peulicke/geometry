@@ -1,5 +1,19 @@
 export type Vec3 = [number, number, number];
 
+export const getOrigin = (): Vec3 => [0, 0, 0];
+
+export const getXPlus = (): Vec3 => [1, 0, 0];
+
+export const getYPlus = (): Vec3 => [0, 1, 0];
+
+export const getZPlus = (): Vec3 => [0, 0, 1];
+
+export const getXMinus = (): Vec3 => [-1, 0, 0];
+
+export const getYMinus = (): Vec3 => [0, -1, 0];
+
+export const getZMinus = (): Vec3 => [0, 0, -1];
+
 export const clone = (v: Vec3): Vec3 => [...v];
 
 export const isVec3 = (v: unknown): v is Vec3 => Array.isArray(v) && v.length === 3;

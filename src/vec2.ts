@@ -2,6 +2,16 @@ import type { Grid } from "./grid.js";
 
 export type Vec2 = [number, number];
 
+export const getOrigin = (): Vec2 => [0, 0];
+
+export const getXPlus = (): Vec2 => [1, 0];
+
+export const getYPlus = (): Vec2 => [0, 1];
+
+export const getXMinus = (): Vec2 => [-1, 0];
+
+export const getYMinus = (): Vec2 => [0, -1];
+
 export const clone = (v: Vec2): Vec2 => [...v];
 
 export const isVec2 = (v: unknown): v is Vec2 => Array.isArray(v) && v.length === 2;

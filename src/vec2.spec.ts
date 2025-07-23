@@ -97,3 +97,20 @@ describe("random", () => {
         expect(vec2.randFromTo([10, 10], [20, 20], () => 0.5)).toStrictEqual([15, 15]);
     });
 });
+
+describe("rect", () => {
+    it("creates a rect from to", () => {
+        expect(vec2.createRectFromTo([2, 3], [4, 5])).toStrictEqual([
+            [2, 3],
+            [4, 5]
+        ]);
+        expect(vec2.createRectFromTo([4, 3], [2, 5])).toStrictEqual([
+            [2, 3],
+            [4, 5]
+        ]);
+        expect(vec2.createRectFromTo([4, 5], [2, 3])).toStrictEqual([
+            [2, 3],
+            [4, 5]
+        ]);
+    });
+});

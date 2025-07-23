@@ -163,6 +163,11 @@ export type Rect = [Vec2, Vec2];
 
 export const createRect = (center: Vec2, r: Vec2): Rect => [sub(center, r), add(center, r)];
 
+export const createRectFromTo = (from: Vec2, to: Vec2): Rect => [
+    [Math.min(from[0], to[0]), Math.min(from[1], to[1])],
+    [Math.max(from[0], to[0]), Math.max(from[1], to[1])]
+];
+
 export const insideRect = (v: Vec2, rect: Rect): boolean =>
     v[0] > rect[0][0] && v[1] > rect[0][1] && v[0] < rect[1][0] && v[1] < rect[1][1];
 

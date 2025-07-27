@@ -11,6 +11,7 @@
         "deploy": "npm run build && npm publish --access public"
     },
     "dependencies": {
+        "@peulicke/algorithms": "^1.0.10",
         "tinyqueue": "^3.0.0"
     },
     "devDependencies": {

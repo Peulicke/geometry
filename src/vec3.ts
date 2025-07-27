@@ -1,3 +1,5 @@
+import { epsilon } from "./epsilon.js";
+
 export type Vec3 = [number, number, number];
 
 export const getOrigin = (): Vec3 => [0, 0, 0];
@@ -93,3 +95,7 @@ export const rotate = (v: Vec3, axis: Vec3, angle: number): Vec3 => {
     const sin = Math.sin(angle);
     return add(add(scale(v, cos), scale(cross(a, v), sin)), scale(a, dot(a, v) * (1 - cos)));
 };
+
+export const almostEquals = (a: Vec3, b: Vec3): boolean => dist(a, b) < epsilon;
+
+export const dirAlmostEquals = (a: Vec3, b: Vec3): boolean => almostEquals(normalize(a), normalize(b));

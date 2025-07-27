@@ -1,8 +1,6 @@
 import { describe, expect, it } from "vitest";
 import * as vec2 from "./vec2.js";
 
-const epsilon = 1e-10;
-
 describe("unique", () => {
     it("returns empty array", () => {
         expect(vec2.unique([])).toStrictEqual([]);
@@ -76,8 +74,7 @@ describe("rotation", () => {
         const v: vec2.Vec2 = [1, 1];
         const rotated = vec2.rotate(v, Math.PI / 2);
         const expected: vec2.Vec2 = [-1, 1];
-        const error = vec2.dist(rotated, expected);
-        expect(error).toBeLessThan(epsilon);
+        expect(vec2.almostEquals(rotated, expected)).toBe(true);
     });
 });
 

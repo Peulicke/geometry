@@ -1,3 +1,4 @@
+import { epsilon } from "./epsilon.js";
 import type { Grid } from "./grid.js";
 
 export type Vec2 = [number, number];
@@ -17,6 +18,8 @@ export const clone = (v: Vec2): Vec2 => [...v];
 export const isVec2 = (v: unknown): v is Vec2 => Array.isArray(v) && v.length === 2;
 
 export const equals = (a: Vec2, b: Vec2): boolean => a[0] === b[0] && a[1] === b[1];
+
+export const almostEquals = (a: Vec2, b: Vec2): boolean => dist(a, b) < epsilon;
 
 export const add = (a: Vec2, b: Vec2): Vec2 => [a[0] + b[0], a[1] + b[1]];
 

@@ -1,4 +1,4 @@
-import { vec3 } from "@peulicke/geometry";
+import { vec3 } from "./index.js";
 
 export type Orient = {
     v: vec3.Vec3;

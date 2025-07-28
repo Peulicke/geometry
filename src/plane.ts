@@ -38,10 +38,10 @@ export const getYMinusOffsetPlane = (offset: number): Plane => getDirOffsetPlane
 
 export const getZMinusOffsetPlane = (offset: number): Plane => getDirOffsetPlane(vec3.getZMinus(), offset);
 
-const flipDir = (basePlane: Plane, dir: vec3.Vec3): vec3.Vec3 =>
+export const flipDir = (basePlane: Plane, dir: vec3.Vec3): vec3.Vec3 =>
     vec3.sub(dir, vec3.scale(vec3.proj(dir, basePlane.dir), 2));
 
-const flipPos = (basePlane: Plane, pos: vec3.Vec3): vec3.Vec3 =>
+export const flipPos = (basePlane: Plane, pos: vec3.Vec3): vec3.Vec3 =>
     vec3.add(flipDir(basePlane, vec3.sub(pos, basePlane.pos)), basePlane.pos);
 
 export const flipPlane = (plane: Plane, basePlane: Plane): Plane => ({

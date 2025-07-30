@@ -27,3 +27,25 @@ it("creates the correct number of polygons for a cube with inner points", () => 
     ]);
     expect(unitCube.length).toBe(6);
 });
+
+it("creates the correct number of polygons for an extruded octagon", () => {
+    const convexHull = pointsToConvexHull([
+        [20, 5, 2],
+        [15, 10, 2],
+        [-20, 5, 2],
+        [-15, 10, 2],
+        [20, -5, 2],
+        [15, -10, 2],
+        [-20, -5, 2],
+        [-15, -10, 2],
+        [20, 5, -2],
+        [15, 10, -2],
+        [-20, 5, -2],
+        [-15, 10, -2],
+        [20, -5, -2],
+        [15, -10, -2],
+        [-20, -5, -2],
+        [-15, -10, -2]
+    ]);
+    expect(convexHull.length).toBe(10);
+});

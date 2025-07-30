@@ -12,6 +12,8 @@ const vec3Avg = (v: vec3.Vec3[]): vec3.Vec3 =>
         1 / v.length
     );
 
+const removeDuplicatePoints = (points: vec3.Vec3[]): vec3.Vec3[] => removeSimilar(points, vec3.almostEquals);
+
 const removeDuplicatePolygons = (polygons: Polygon[]): Polygon[] => removeSimilar(polygons, almostEquals);
 
 const isPolygonInsideConvexHull = (polygon: Polygon, points: vec3.Vec3[]): boolean =>
@@ -35,7 +37,7 @@ const removeInnerPoints = (points: vec3.Vec3[]): vec3.Vec3[] =>
     points.filter(point => isPointNotInsideConvexHull(point, points));
 
 export const pointsToConvexHull = (allPoints: vec3.Vec3[]): Polygon[] => {
-    const points = removeInnerPoints(allPoints);
+    const points = removeInnerPoints(removeDuplicatePoints(allPoints));
     const center = vec3Avg(points);
     const planes = points
         .flatMap((p1, i1) =>

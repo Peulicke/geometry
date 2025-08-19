@@ -1,6 +1,10 @@
 import { expect, it } from "vitest";
 import { pointsToConvexHull } from "./convexHull.js";
 
+it("creates 0 polygons for 0 points", () => {
+    expect(pointsToConvexHull([]).length).toBe(0);
+});
+
 it("creates the correct number of polygons for a tetrahedron", () => {
     const tetrahedron = pointsToConvexHull([
         [0, 0, 0],

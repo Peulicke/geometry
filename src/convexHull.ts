@@ -36,6 +36,7 @@ const isPointNotInsideConvexHull = (point: vec3.Vec3, planes: Plane[]): boolean 
 };
 
 const computePlanes = (points: vec3.Vec3[]): Plane[] => {
+    if (points.length === 0) return [];
     const center = vec3Avg(points);
     return removePlanesInsideConvexHull(
         points,

@@ -29,7 +29,6 @@ it("creates the correct number of polygons for a cube with inner points", () => 
         [-1, -1, 1],
         [-1, -1, -1]
     ]);
-    console.log(unitCube.map(u => u.points));
     expect(unitCube.length).toBe(6 * 2);
 });
 

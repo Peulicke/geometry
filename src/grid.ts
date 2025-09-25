@@ -9,6 +9,14 @@ export const create = <T>(size: vec2.Vec2, getValue: (pos: vec2.Vec2) => T): Gri
 export const map = <T1, T2>(grid: Grid<T1>, func: (value: T1, pos: vec2.Vec2) => T2): Grid<T2> =>
     grid.map((row, i) => row.map((value, j) => func(value, [i, j])));
 
+export const forEach = <T>(grid: Grid<T>, func: (value: T, pos: vec2.Vec2) => void): void => {
+    grid.forEach((row, i) => {
+        row.forEach((value, j) => {
+            func(value, [i, j]);
+        });
+    });
+};
+
 export const setCell = <T>(grid: Grid<T>, pos: vec2.Vec2, value: T): void => {
     if (pos[0] < 0 || pos[0] >= grid.length) return;
     if (pos[1] < 0 || pos[1] >= (grid[0]?.length ?? 0)) return;

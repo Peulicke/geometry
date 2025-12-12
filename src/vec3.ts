@@ -1,3 +1,4 @@
+import { basic } from "@peulicke/algorithms";
 import { epsilon } from "./epsilon.js";
 
 export type Vec3 = [number, number, number];
@@ -99,3 +100,17 @@ export const rotate = (v: Vec3, axis: Vec3, angle: number): Vec3 => {
 export const almostEquals = (a: Vec3, b: Vec3): boolean => dist(a, b) < epsilon;
 
 export const dirAlmostEquals = (a: Vec3, b: Vec3): boolean => almostEquals(normalize(a), normalize(b));
+
+export const sum = (vList: Vec3[]): Vec3 => vList.reduce((s, v) => add(s, v), [0, 0, 0]);
+
+export const mean = (vList: Vec3[]): Vec3 => scale(sum(vList), 1 / vList.length);
+
+export type WeightedVec3 = {
+    value: Vec3;
+    weight: number;
+};
+
+export const weightedMean = (vList: WeightedVec3[]): Vec3 => {
+    const totalWeight = basic.sum(vList.map(({ weight }) => weight));
+    return scale(sum(vList.map(({ value, weight }) => scale(value, weight))), 1 / totalWeight);
+};

@@ -29,7 +29,7 @@ it("creates the correct number of polygons for a cube with inner points", () => 
         [-1, -1, 1],
         [-1, -1, -1]
     ]);
-    expect(unitCube.length).toBe(6 * 2);
+    expect(unitCube.length).toBe(6);
 });
 
 it("creates the correct number of polygons for an extruded octagon", () => {
@@ -51,5 +51,5 @@ it("creates the correct number of polygons for an extruded octagon", () => {
         [-20, -5, -2],
         [-15, -10, -2]
     ]);
-    expect(convexHull.length).toBe(8 * 2 + 2 * 6);
+    expect(convexHull.length).toBe(8 + 2);
 });

@@ -46,6 +46,18 @@ export const isInFrontOfPolygon = (point: vec3.Vec3, polygon: Polygon): boolean 
 
 export const triangleToPolygon = (triangle: Triangle): Polygon => ({ points: triangle });
 
+export const polygonToTriangles = (polygon: Polygon): Triangle[] => {
+    const triangles: Triangle[] = [];
+    for (let i = 1; i + 1 < polygon.points.length; ++i) {
+        const p1 = polygon.points[0];
+        const p2 = polygon.points[i];
+        const p3 = polygon.points[i + 1];
+        if (p1 === undefined || p2 === undefined || p3 === undefined) continue;
+        triangles.push([p1, p2, p3]);
+    }
+    return triangles;
+};
+
 export const getPolygonsCommonLine = (a: Polygon, b: Polygon): [number, number] | undefined =>
     a.points.flatMap((_, i) =>
         b.points.flatMap((_, j): [number, number][] => {

@@ -1,4 +1,4 @@
-import { vec3 } from "./index.js";
+import * as vec3 from "./vec3.js";
 
 export type Orient = {
     v: vec3.Vec3;

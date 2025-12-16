@@ -1,6 +1,5 @@
 import { epsilon } from "./epsilon.js";
-import { vec3 } from "./index.js";
-import { dirAlmostEquals } from "./vec3.js";
+import * as vec3 from "./vec3.js";
 
 export type Plane = {
     pos: vec3.Vec3;
@@ -97,4 +96,4 @@ export const isBehindPlane = (point: vec3.Vec3, plane: Plane): boolean =>
     vec3.dot(vec3.sub(point, plane.pos), plane.dir) < -epsilon;
 
 export const almostEquals = (a: Plane, b: Plane): boolean =>
-    dirAlmostEquals(a.dir, b.dir) && isPointAlmostOnPlane(a.pos, b);
+    vec3.dirAlmostEquals(a.dir, b.dir) && isPointAlmostOnPlane(a.pos, b);

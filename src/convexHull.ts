@@ -1,5 +1,5 @@
 import ch from "convex-hull";
-import { vec3 } from "./index.js";
+import * as vec3 from "./vec3.js";
 import { type Polygon } from "./polygon.js";
 
 export const pointsToConvexHull = (allPoints: vec3.Vec3[]): Polygon[] => {

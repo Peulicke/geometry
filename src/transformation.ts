@@ -1,4 +1,5 @@
-import { orient, vec3 } from "./index.js";
+import * as vec3 from "./vec3.js";
+import * as orient from "./orient.js";
 
 const epsilon = 1e-6;
 

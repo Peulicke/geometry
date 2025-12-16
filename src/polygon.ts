@@ -1,4 +1,5 @@
-import { vec2, vec3 } from "./index.js";
+import * as vec2 from "./vec2.js";
+import * as vec3 from "./vec3.js";
 import { isInFrontOfPlane, isPointAlmostOnPlane, type Plane } from "./plane.js";
 
 export type Polygon = { points: vec3.Vec3[] };

@@ -1,4 +1,5 @@
 import { epsilon } from "./epsilon.js";
+import type { Line } from "./line.js";
 import * as vec3 from "./vec3.js";
 
 export type Plane = {
@@ -97,3 +98,13 @@ export const isBehindPlane = (point: vec3.Vec3, plane: Plane): boolean =>
 
 export const almostEquals = (a: Plane, b: Plane): boolean =>
     vec3.dirAlmostEquals(a.dir, b.dir) && isPointAlmostOnPlane(a.pos, b);
+
+export const linePlaneIntersection = (line: Line, plane: Plane): vec3.Vec3 => {
+    const n = vec3.normalize(plane.dir);
+    const lineDir = vec3.normalize(vec3.sub(line.to, line.from));
+    const lineDirAlongNormal = vec3.dot(lineDir, n);
+    const lineToPlaneDiff = vec3.sub(plane.pos, line.from);
+    const lineToPlaneDiffAlongNormal = vec3.dot(lineToPlaneDiff, n);
+    const scale = lineToPlaneDiffAlongNormal / lineDirAlongNormal;
+    return vec3.add(line.from, vec3.scale(lineDir, scale));
+};

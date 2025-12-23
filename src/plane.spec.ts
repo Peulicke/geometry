@@ -13,6 +13,7 @@ import {
     invertPlane,
     isInFrontOfPlane,
     isPointAlmostOnPlane,
+    linePlaneIntersection,
     planeIntersection
 } from "./plane.js";
 import { getOrigin } from "./vec3.js";
@@ -55,4 +56,19 @@ it("checks if 2 planes are the same", () => {
     expect(almostEquals(getXPlusPlane(), getXPlusPlane())).toBe(true);
     expect(almostEquals(getXPlusPlane(), getPlane([0, 1, 2], [1, 0, 0]))).toBe(true);
     expect(almostEquals(getXPlusPlane(), getXMinusPlane())).toBe(false);
+});
+
+it("gets intersection of plane and line", () => {
+    expect(
+        linePlaneIntersection({ from: [0, 0, 0], to: [0, 1, 0] }, { pos: [0, 0, 0], dir: [0, 1, 0] })
+    ).toBeCloseToVec3([0, 0, 0]);
+    expect(
+        linePlaneIntersection({ from: [0, 0, 0], to: [0, 1, 0] }, { pos: [0, 10, 0], dir: [1, 1, 1] })
+    ).toBeCloseToVec3([0, 10, 0]);
+    expect(
+        linePlaneIntersection({ from: [-1, -2, -3], to: [1, 2, 3] }, { pos: [0, 0, 0], dir: [1, 1, 1] })
+    ).toBeCloseToVec3([0, 0, 0]);
+    expect(
+        linePlaneIntersection({ from: [-1, -2, -3], to: [1, 2, 3] }, { pos: [2, 4, 6], dir: [1, 3, 5] })
+    ).toBeCloseToVec3([2, 4, 6]);
 });

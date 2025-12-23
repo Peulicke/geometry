@@ -1,6 +1,7 @@
 import ch from "convex-hull";
 import * as vec3 from "./vec3.js";
-import { canPolygonsBeMerged, mergePolygons, triangleToPolygon, type Polygon, type Triangle } from "./polygon.js";
+import { canPolygonsBeMerged, mergePolygons, triangleToPolygon, type Polygon } from "./polygon.js";
+import type { Triangle } from "./triangle.js";
 
 export const pointsToConvexHullTriangles = (allPoints: vec3.Vec3[]): Triangle[] => {
     return ch(allPoints).map(

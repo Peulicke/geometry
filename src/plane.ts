@@ -1,5 +1,7 @@
 import { epsilon } from "./epsilon.js";
 import { getLineDir, type Line } from "./line.js";
+import * as orient from "./orient.js";
+import { applyTransformation, type Transformation } from "./transformation.js";
 import * as vec3 from "./vec3.js";
 
 export type Plane = {
@@ -108,3 +110,8 @@ export const linePlaneIntersection = (line: Line, plane: Plane): vec3.Vec3 => {
     const scale = lineToPlaneDiffAlongNormal / lineDirAlongNormal;
     return vec3.add(line.from, vec3.scale(lineDir, scale));
 };
+
+export const transformPlane = (plane: Plane, transformation: Transformation): Plane => ({
+    pos: applyTransformation(plane.pos, transformation),
+    dir: orient.rotateVec3(transformation.orient, plane.dir)
+});

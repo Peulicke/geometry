@@ -1,4 +1,5 @@
 import { expect, it } from "vitest";
+import * as orient from "./orient.js";
 import {
     almostEquals,
     flipPlane,
@@ -14,8 +15,11 @@ import {
     isInFrontOfPlane,
     isPointAlmostOnPlane,
     linePlaneIntersection,
-    planeIntersection
+    planeIntersection,
+    transformPlane,
+    type Plane
 } from "./plane.js";
+import { createTransformation } from "./transformation.js";
 import { getOrigin } from "./vec3.js";
 
 it("flips a plane", () => {
@@ -71,4 +75,21 @@ it("gets intersection of plane and line", () => {
     expect(
         linePlaneIntersection({ from: [-1, -2, -3], to: [1, 2, 3] }, { pos: [2, 4, 6], dir: [1, 3, 5] })
     ).toBeCloseToVec3([2, 4, 6]);
+});
+
+it("transforms a plane", () => {
+    const transformed = transformPlane(
+        { pos: [1, 0, 0], dir: [1, 0, 0] },
+        createTransformation({
+            pos: [0, 1, 0],
+            orient: orient.fromAxisAngle([0, 1, 0], Math.PI),
+            scale: 2
+        })
+    );
+    const expected: Plane = {
+        pos: [-2, 1, 0],
+        dir: [-1, 0, 0]
+    };
+    expect(transformed.pos).toBeCloseToVec3(expected.pos);
+    expect(transformed.dir).toBeCloseToVec3(expected.dir);
 });

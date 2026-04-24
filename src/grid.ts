@@ -97,3 +97,5 @@ export const aStar = (start: vec2.Vec2, targets: vec2.Vec2[], walls: Grid<boolea
     }
     return generatePath(map, start);
 };
+
+export const sizeOfGrid = <T>(grid: Grid<T>): vec2.Vec2 => [grid.length, grid[0]?.length ?? 0];

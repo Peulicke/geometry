@@ -1,4 +1,5 @@
 import { epsilon } from "./epsilon.js";
+import type { vec2 } from "./index.js";
 
 export type Vec2 = [number, number];
 
@@ -186,7 +187,20 @@ export const getRectR = (rect: Rect): Vec2 => scale(getRectSize(rect), 0.5);
 
 export const moveRect = (rect: Rect, pos: Vec2): Rect => [add(rect[0], pos), add(rect[1], pos)];
 
-export const growRect = (rect: Rect, amount: Vec2): Rect => [sub(rect[0], amount), add(rect[1], amount)];
+const transposeRect = (rect: Rect): Rect => [
+    [rect[0][0], rect[1][0]],
+    [rect[0][1], rect[1][1]]
+];
+
+const growRange = (range: vec2.Vec2, amount: number): vec2.Vec2 => {
+    if (range[0] <= range[1]) return [range[0] - amount, range[1] + amount];
+    return [range[0] + amount, range[1] - amount];
+};
+
+export const growRect = (rect: Rect, amount: Vec2): Rect => {
+    const ranges = transposeRect(rect);
+    return transposeRect([growRange(ranges[0], amount[0]), growRange(ranges[1], amount[1])]);
+};
 
 export const shrinkRect = (rect: Rect, amount: Vec2): Rect => growRect(rect, negate(amount));
 

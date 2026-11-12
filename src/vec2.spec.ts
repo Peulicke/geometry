@@ -139,4 +139,42 @@ describe("rect", () => {
             )
         ).toBe(true);
     });
+    it("grows a rect by an amount", () => {
+        expect(
+            vec2.growRect(
+                [
+                    [1, 0],
+                    [10, 100]
+                ],
+                [2, 3]
+            )
+        ).toStrictEqual([
+            [-1, -3],
+            [12, 103]
+        ]);
+        expect(
+            vec2.growRect(
+                [
+                    [1, 100],
+                    [10, 0]
+                ],
+                [2, 3]
+            )
+        ).toStrictEqual([
+            [-1, 103],
+            [12, -3]
+        ]);
+        expect(
+            vec2.growRect(
+                [
+                    [0, 0],
+                    [0, 0]
+                ],
+                [2, 3]
+            )
+        ).toStrictEqual([
+            [-2, -3],
+            [2, 3]
+        ]);
+    });
 });

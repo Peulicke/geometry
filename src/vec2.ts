@@ -168,8 +168,15 @@ export const createRectFromTo = (from: Vec2, to: Vec2): Rect => [
     [Math.max(from[0], to[0]), Math.max(from[1], to[1])]
 ];
 
-export const insideRect = (v: Vec2, rect: Rect): boolean =>
+export const normalizeRect = (rect: Rect): Rect => [
+    [Math.min(rect[0][0], rect[1][0]), Math.min(rect[0][1], rect[1][1])],
+    [Math.max(rect[0][0], rect[1][0]), Math.max(rect[0][1], rect[1][1])]
+];
+
+const insideNormalizedRect = (v: Vec2, rect: Rect): boolean =>
     v[0] > rect[0][0] && v[1] > rect[0][1] && v[0] < rect[1][0] && v[1] < rect[1][1];
+
+export const insideRect = (v: Vec2, rect: Rect): boolean => insideNormalizedRect(v, normalizeRect(rect));
 
 export const getRectCenter = (rect: Rect): Vec2 => lerp(rect[0], rect[1], 0.5);
 

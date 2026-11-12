@@ -110,4 +110,33 @@ describe("rect", () => {
             [4, 5]
         ]);
     });
+    it("check that point is inside rect", () => {
+        expect(
+            vec2.insideRect(
+                [1, 2],
+                [
+                    [0.9, 0],
+                    [10, 100]
+                ]
+            )
+        ).toBe(true);
+        expect(
+            vec2.insideRect(
+                [1, 2],
+                [
+                    [1.1, 0],
+                    [10, 100]
+                ]
+            )
+        ).toBe(false);
+        expect(
+            vec2.insideRect(
+                [1, 2],
+                [
+                    [0.9, 100],
+                    [10, 0]
+                ]
+            )
+        ).toBe(true);
+    });
 });
